@@ -1,0 +1,85 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRA | Taxpayers</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/styling/img/svg/logomra.png" type="image/x-icon">
+    <link href="~/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
+    <link rel="stylesheet" href="~/styling/css/style.min.css">
+    <link rel="stylesheet" href="~/css/W3.css">
+    <link href="~/lib/Toastr/toastr.css" rel="stylesheet" />
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="layer"></div>
+    <!-- ! Body -->
+    <a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+    <div class="page-flex">
+        <!-- ! Sidebar -->
+        <aside class="sidebar" style="background-color:green">
+            <partial />
+            <partial name="_Sidenav" />
+        </aside>
+        <div class="main-wrapper">
+            <!-- ! Main nav -->
+            <nav class="main-nav--bg">
+                <partial name="_TopNav" />
+            </nav>
+            <!-- ! Main -->
+            @RenderBody()
+            <!-- ! Footer -->
+            <footer class="footer">
+                <div class="container footer--flex">
+                    <div class="footer-start">
+                        <p>
+                            2021 © MRA - <a href="www.mra.com" target="_blank"
+                                            rel="noopener noreferrer">Website</a>
+                        </p>
+                    </div>
+
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart library -->
+    <script src="~/styling/plugins/feather.min.js"></script>
+    <!-- Icons library -->
+    <script src="~/styling/plugins/feather.min.js"></script>
+    <!-- Custom scripts -->
+    <script src="~/styling/js/script.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.dataTables.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="~/lib/Toastr/toastr.js"></script>
+    <script src="~/js/jquery.validate.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

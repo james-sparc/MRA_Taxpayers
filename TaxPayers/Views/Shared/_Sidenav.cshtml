@@ -1,0 +1,35 @@
+﻿ <div class="sidebar-start">
+        <div class="sidebar-head">
+            <a href="@Url.Action("Home", "Home")" class="logo-wrapper" title="Home">
+                <span class="sr-only">Home</span>            
+                <div class="logo-text">
+                    <span class="logo-title">MRA</span>
+                    <span class="logo-subtitle">Dashboard</span>
+                </div>
+
+            </a>
+            <img src="~/styling/img/svg/mra_pic.jpg" class="w3-image image-responsive w3-circle" style="width:75px;height:50px" />
+            <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+                <span class="sr-only">Toggle menu</span>
+                <span class="icon menu-toggle" aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="sidebar-body">
+            <ul class="sidebar-body-menu">
+                <li>
+                    <a class="active" href="@Url.Action("Home", "Home")"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
+                </li>
+                <li>
+                    <a class="icon user-3n" href="@Url.Action("Index", "Taxpayers")">
+                        <span class="icon document" aria-hidden="true"></span>Taxpayers
+                        <span class="category__btn transparent-btn" title="Open list">
+                            <span class="sr-only">Open list</span>
+                           
+                        </span>
+                    </a>                   
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+   

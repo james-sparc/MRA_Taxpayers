@@ -1,0 +1,170 @@
+﻿@model TaxPayers.Core.Models.Taxpayer
+
+<!--Editing Modal-->
+<div class="modal fade edit-taxpayers-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Edit Tax Payer</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("UpdatePaxPayer", "Taxpayers", FormMethod.Post, new { onsubmit = "return SubmitForm(this, 'PUT')", novalidate = "novalidate", id ="formElem" }))
+                {
+                    <input data-val="true" id="Username" name="Username" type="hidden" value="">                    
+                    <input data-val="true" id="TPIN" name="TPIN" type="hidden" value="">                    
+                    <input id="option" name="PUT" type="hidden" value="Edit">
+                 
+
+                    <div class="field item form-group">
+                        @Html.LabelFor(model => model.BusinessCertificateNumber, new { @class = "col-form-label col-md-12 col-sm-12  label-align" })
+                        <div class="col-md-12 col-sm-12">
+                            @Html.EditorFor(model => model.BusinessCertificateNumber, new { htmlAttributes = new { @class = "w3-input text", @required = "required", id = "BusinessCertificateNumber" } })
+                            @Html.ValidationMessageFor(model => model.BusinessCertificateNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div class="field item form-group">
+                        @Html.LabelFor(model => model.TradingName, new { @class = "col-form-label col-md-12 col-sm-12  label-align" })
+                        <div class="col-md-12 col-sm-12">
+                            @Html.EditorFor(model => model.TradingName, new { htmlAttributes = new { @class = "     text", @required = "required", id = "TradingName" } })
+                            @Html.ValidationMessageFor(model => model.TradingName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div class="field item form-group">
+                        @Html.LabelFor(model => model.BusinessRegistrationDate, new { @class = "col-form-label col-md-12 col-sm-12  label-align" })
+                        <div class="col-md-12 col-sm-12">
+                            <input class="w3-input" id="BusinessRegistrationDate" type="text" name="BusinessRegistrationDate" required='required'>
+                            <!--Html.EditorFor(model => model.BusinessRegistrationDate, new { htmlAttributes = new { class = "w3-input text", required = "required", id = "BusinessRegistrationDate" } })-->
+                            @Html.ValidationMessageFor(model => model.BusinessRegistrationDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div class="field item form-group">
+                        @Html.LabelFor(model => model.MobileNumber, new { @class = "col-form-label col-md-12 col-sm-12  label-align" })
+                        <div class="col-md-12 col-sm-12">
+                            @Html.EditorFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "w3-input text", @required = "required", id = "MobileNumber" } })
+                            @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div class="field item form-group">
+                        @Html.LabelFor(model => model.Email, new { @class = "col-form-label col-md-12 col-sm-12  label-align" })
+                        <div class="col-md-12 col-sm-12">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "w3-input text", @required = "required", id = "Email" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="field item form-group">
+                        @Html.LabelFor(model => model.PhysicalLocation, new { @class = "col-form-label col-md-12 col-sm-12  label-align" })
+                        <div class="col-md-12 col-sm-12">
+                            @Html.EditorFor(model => model.PhysicalLocation, new { htmlAttributes = new { @class = "w3-input text", @required = "required", id = "PhysicalLocation" } })
+                            @Html.ValidationMessageFor(model => model.PhysicalLocation, "", new { @class = "text-danger" })
+                        </div>
+                    </div>                         
+                 
+                    <hr />
+
+                    <div class="">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!--Adding Modal-->
+<div class="modal fade add-taxpayer-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-titl" id="myModalLabel">Add Tax Payer</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("CreateTaxpayer", "Taxpayers/", FormMethod.Post, new { onsubmit = "return SubmitForm(this, 'POST')", novalidate = "novalidate" }))
+                {
+                    <input id="options" name="POST" type="hidden" value="POST">
+                       <div class="field item form-group">
+                        @Html.LabelFor(model => model.TPIN, new { @class = "col-form-label col-md-12 col-sm-12  label-align" })
+                        <div class="col-md-12 col-sm-12">
+                            @Html.EditorFor(model => model.TPIN, new { htmlAttributes = new { @class = "w3-input text", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.TPIN, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="field item form-group">
+                        @Html.LabelFor(model => model.BusinessCertificateNumber, new { @class = "col-form-label col-md-12 col-sm-12  label-align" })
+                        <div class="col-md-12 col-sm-12">
+                            @Html.EditorFor(model => model.BusinessCertificateNumber, new { htmlAttributes = new { @class = "w3-input text", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.BusinessCertificateNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div class="field item form-group">
+                        @Html.LabelFor(model => model.TradingName, new { @class = "col-form-label col-md-12 col-sm-12  label-align" })
+                        <div class="col-md-12 col-sm-12">
+                            @Html.EditorFor(model => model.TradingName, new { htmlAttributes = new { @class = "w3-input text", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.TradingName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div class="field item form-group">
+                        @Html.LabelFor(model => model.BusinessRegistrationDate, new { @class = "col-form-label col-md-12 col-sm-12  label-align" })
+                        <div class="col-md-12 col-sm-12">
+                            <input class="w3-input date" id="DateInviteds" type="date" name="BusinessRegistrationDate" required='required'>
+                            <!--Html.EditorFor(model => model.BusinessRegistrationDate, new { htmlAttributes = new { class = "w3-input date", required = "required" } })-->
+                            @Html.ValidationMessageFor(model => model.BusinessRegistrationDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div class="field item form-group">
+                        @Html.LabelFor(model => model.MobileNumber, new { @class = "col-form-label col-md-12 col-sm-12  label-align" })
+                        <div class="col-md-12 col-sm-12">
+                            @Html.EditorFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "w3-input text", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div class="field item form-group">
+                        @Html.LabelFor(model => model.Email, new { @class = "col-form-label col-md-12 col-sm-12  label-align" })
+                        <div class="col-md-12 col-sm-12">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "w3-input text", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="field item form-group">
+                        @Html.LabelFor(model => model.PhysicalLocation, new { @class = "col-form-label col-md-12 col-sm-12  label-align" })
+                        <div class="col-md-12 col-sm-12">
+                            @Html.EditorFor(model => model.PhysicalLocation, new { htmlAttributes = new { @class = "w3-input text", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.PhysicalLocation, "", new { @class = "text-danger" })
+                        </div>
+                    </div>                         
+                 
+                    <hr />
+
+                    <div class="">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
