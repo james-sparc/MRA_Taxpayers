@@ -11,6 +11,7 @@ CONTENTS OF THIS FILE
  * Configuration
  * Browser Support  
  * Modules in details  
+ * Deploying
 
  INTRODUCTION
 ------------
@@ -83,3 +84,6 @@ MODULES IN DETAIL
 ##### Note: 
 Make sure you are connected to the internet as the API is hosted online
 
+##### Note: 
+To deploy, click on build -> Publish -> Select where you want to deploy -> fill in the necessary details
+After filling all necessary details, click Publich button
