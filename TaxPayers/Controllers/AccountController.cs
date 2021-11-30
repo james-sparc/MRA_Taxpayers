@@ -25,23 +25,18 @@ namespace TaxPayers.Controllers
 
         public HttpClient HttpClient => httpClient ?? (httpClient = new HttpClient());
 
-
+        // function to login
         [HttpPost("Login")]
         public async Task<IActionResult> Login(string email, string password)
 
         {
-
-            var keyValues = new List<KeyValuePair<string, string>>()
-                {
-                    new KeyValuePair<string, string>("Email",email),
-                    new KeyValuePair<string, string>("Password",password)
-                };
             var appUser = new ApplicationUser()
             {
                 Email = email,
                 Password = password
             };
 
+            //sending data to api
             var request = new StringContent(JsonConvert.SerializeObject(appUser), Encoding.UTF8, "application/json");
             var result = await HttpClient.PostAsync(Url + "login", request);
 
@@ -51,6 +46,7 @@ namespace TaxPayers.Controllers
 
             var resultCode = parsedData["Token"];
 
+            // if true and result code is 1 display home page else show login button again
             if (result.IsSuccessStatusCode && resultCode != null)
             {
                 

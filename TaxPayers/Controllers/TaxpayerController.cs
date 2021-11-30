@@ -46,6 +46,7 @@ namespace TaxPayers.Controllers
    
 
         // POST api/<TaxpayerController>
+        // creating a tax payer
         [HttpPost]        
         public async Task<IActionResult> Post([FromForm]Taxpayer taxpayer)
         {
@@ -62,11 +63,13 @@ namespace TaxPayers.Controllers
             {
                 string username = HttpContext.Session.GetString("Username");
 
+                //headers
                 HttpClient.DefaultRequestHeaders.Add("candidateid", username);
 
                 HttpClient.DefaultRequestHeaders.Add("apikey", "3fdb48c5-336b-47f9-87e4-ae73b8036a1c");
 
-                taxpayer.Username = "mjuweni@outlook.com";
+                taxpayer.Username = username;
+
                 var request = new StringContent(JsonConvert.SerializeObject(taxpayer), Encoding.UTF8, "application/json");
                 var result = await HttpClient.PostAsync(Url+"add", request);
 
@@ -95,6 +98,7 @@ namespace TaxPayers.Controllers
         }
 
         // PUT api/<TaxpayerController>/5       
+        //updating taxpayer
         [HttpPut("{tpin}")]
         public async Task<IActionResult> Put(string tpin, [FromForm] Taxpayer taxpayer)
         {
@@ -108,8 +112,7 @@ namespace TaxPayers.Controllers
                 return BadRequest(messages);
             } 
             try
-            {
-                var forData = HttpContext.Request.Form;
+            {                
                 // header
                 string username = HttpContext.Session.GetString("Username");
             
@@ -117,6 +120,7 @@ namespace TaxPayers.Controllers
                 HttpClient.DefaultRequestHeaders.Add("apikey", "3fdb48c5-336b-47f9-87e4-ae73b8036a1c");
 
                 taxpayer.Username = username;
+                
                 var request = new StringContent(JsonConvert.SerializeObject(taxpayer), Encoding.UTF8, "application/json");
                 var result = await HttpClient.PostAsync(Url + "edit", request);
 
@@ -138,11 +142,13 @@ namespace TaxPayers.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("","Something went wrong");
                 return BadRequest();
             }
         }
 
         // DELETE api/<TaxpayerController>/5
+        //deleting taxpayer
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string TPIN)
         {

@@ -161,8 +161,13 @@
                         $('.edit-taxpayers-modal').modal('hide');
                         $('.add-taxpayer-modal').modal('hide');
                     })
-                    .fail(function (response) {                        
+                    .fail(function (response) {  
+                        if(response.responseJSON.Remark != null){
                         toastr.error(response.responseJSON.Remark);
+                        }
+                        else{
+                         toastr.error("Something went wrong, check the form or contact administrator");
+                        }
 
                         $("#TPIN").val("");
                         $('.edit-taxpayers-modal').modal('hide');

@@ -25,12 +25,13 @@ namespace TaxPayers.Controllers
 
         public IActionResult Index()
         {
-
+            // show login page
             return View("Login"); ;
         }
 
         public async Task<IActionResult> Home()
         {
+            // check if session is set, if not, show thw login page again
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("Username")))
                 return RedirectToAction("Index", "Home");
 
@@ -44,6 +45,7 @@ namespace TaxPayers.Controllers
 
             List<Taxpayer> taxpayers = JsonConvert.DeserializeObject<List<Taxpayer>>(responseData);          
           
+            // gatting taxpayers total count
             ViewBag.taxpayers = taxpayers.Count;
             return View();
         }

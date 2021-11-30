@@ -168,3 +168,4 @@ D:\Projects\Dot Net Projects\MRA\TaxPayers\TaxPayers\obj\Debug\net5.0\Razor\View
 D:\Projects\Dot Net Projects\MRA\TaxPayers\TaxPayers\obj\Debug\net5.0\Razor\Views\Taxpayers\_Form.cshtml.g.cs
 D:\Projects\Dot Net Projects\MRA\TaxPayers\TaxPayers\obj\Debug\net5.0\Razor\Views\Home\Home.cshtml.g.cs
 D:\Projects\Dot Net Projects\MRA\TaxPayers\TaxPayers\obj\Debug\net5.0\Razor\Views\Home\Login.cshtml.g.cs
+D:\Projects\Dot Net Projects\MRA\TaxPayers\TaxPayers\obj\Debug\net5.0\TaxPayers.csproj.AssemblyReference.cache
