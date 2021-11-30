@@ -63,6 +63,7 @@ namespace TaxPayers.Controllers
             }
             else
             {
+                ModelState.AddModelError("", "Something went wrong");
                 //Redirect to login page                
                 return RedirectToAction("Index", "Home");
             }
