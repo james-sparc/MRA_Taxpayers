@@ -12,10 +12,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                @using (Html.BeginForm("UpdatePaxPayer", "Taxpayers", FormMethod.Post, new { onsubmit = "return SubmitForm(this, 'PUT')", novalidate = "novalidate", id ="formElem" }))
+                @using (Html.BeginForm("UpdatePaxPayer", "Taxpayers", FormMethod.Post, new { onsubmit = "return SubmitForm(this, 'PUT')", novalidate = "novalidate" }))
                 {
-                    <input data-val="true" id="Username" name="Username" type="hidden" value="">                    
-                    <input data-val="true" id="TPIN" name="TPIN" type="hidden" value="">                    
+                    <input id="Username" name="Username" type="hidden" value="">                    
+                    <input  id="TPIN" name="TPIN" type="hidden" value="">                    
                     <input id="option" name="PUT" type="hidden" value="Edit">
                  
 

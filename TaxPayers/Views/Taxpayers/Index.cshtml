@@ -14,7 +14,7 @@
         <br />
 
         <div class="row">
-          <div class="col-lg-12">          
+          <div class="col-lg-12 w3-card-8">          
             <div class="users-table table-wrapper">
               <table class="posts-table Payer">
                 <thead>
@@ -25,8 +25,7 @@
                     <th>Registration Date</th>
                     <th>Phone Number</th>
                     <th>Email</th>
-                    <th>Address</th>
-                 <!--   <th>Added By</th>-->
+                    <th>Address</th>                
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -63,9 +62,9 @@
                                         <i data-feather="more-horizontal" aria-hidden="true"></i>
                                     </button>
                                     <ul class="users-item-dropdown dropdown">
-                                        <li><a class='glyphicon glyphicon-edit fa-lg'  title='Delete' onclick='Edit("@item.TPIN", "@item.Email" ,"@item.Username" , "@item.PhysicalLocation", "@item.MobileNumber", "@item.BusinessRegistrationDate", "@item.TradingName", "@item.BusinessCertificateNumber" )'>Edit</a></li> 
+                                        <li><a class='glyphicon glyphicon-edit fa-lg w3-green'  title='Delete' onclick='Edit("@item.TPIN", "@item.Email" ,"@item.Username" , "@item.PhysicalLocation", "@item.MobileNumber", "@item.BusinessRegistrationDate", "@item.TradingName", "@item.BusinessCertificateNumber" )'>Edit</a></li> 
                           
-                                        <li><a onclick="Delete(@item.TPIN)" class='glyphicon glyphicon-trash fa-lg'  title='Delete'>Delete</a></li> 
+                                        <li><a onclick="Delete(@item.TPIN)" class='glyphicon glyphicon-trash fa-lg w3-yellow'  title='Delete'>Delete</a></li> 
                                     </ul>
                                     <!--<a asp-action="Delete" asp-route-id="">Trash</a>-->
                                     </span>
@@ -141,8 +140,8 @@
 
             if ($(form).valid()) {
 
-               // var path = ($("#TPIN").val().length > 0) ? "/api/taxpayer/" + $("#TPIN").val() : "/api/taxpayer/";                              
-                var path = "/api/taxpayer/";                              
+                var path = ($("#TPIN").val().length > 0) ? "/api/taxpayer/" + $("#TPIN").val() : "/api/taxpayer/";                              
+                //var path = "/api/taxpayer/";                              
 
 
                 $.ajax({
@@ -150,8 +149,8 @@
                     url: path,
                     dataType: 'json',
                     headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
+                        'Accept': 'application/x-www-url-formencoded',
+                        'ContentType': 'application/x-www-url-formencoded'
                     },
                     data: $(form).serialize()
                 })
@@ -159,14 +158,14 @@
                         toastr.success("Task Performed successfully");
 
                         $("#TPIN").val("");
-                        $('.edit-taxpayer-modal').modal('hide');
+                        $('.edit-taxpayers-modal').modal('hide');
                         $('.add-taxpayer-modal').modal('hide');
                     })
-                    .fail(function (response) {
-                        toastr.error("Something went wrong, please try again or contact administrator");
+                    .fail(function (response) {                        
+                        toastr.error(response.responseJSON.Remark);
 
                         $("#TPIN").val("");
-                        $('.edit-taxpayer-modal').modal('hide');
+                        $('.edit-taxpayers-modal').modal('hide');
                         $('.add-taxpayer-modal').modal('hide');
                     });
             }
@@ -174,24 +173,6 @@
         }
 
     </script>
-    <script>
-  formElem.onsubmit = async (e) => {
-    e.preventDefault();
-      var path = ($("#TPIN").val().length > 0) ? "/api/taxpayer/" + $("#TPIN").val() : "/api/taxpayer/";       
-    let response = await fetch(path, {
-      method: 'PUT',
-       dataType: 'json',
-                    headers: {
-                         'Accept': 'application/json',
-                        'Content-Type': 'application/json; charset=UTF-8'
-                    },
-      body: new FormData(formElem)
-    });
-
-    let result = await response.json();
-
-    alert(result.message);
-  };
-</script>
+  >
 
 }

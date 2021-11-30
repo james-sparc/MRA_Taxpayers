@@ -8,7 +8,7 @@ namespace TaxPayers.Core.Models
 {
     public class Taxpayer
     {
-        [Key][Required][MaxLength(8)][MinLength(8)]
+        [Key][Required][MinLength(8)]
         public string TPIN { get; set; }
         [Required]
         [Display(Name = "Business Certificate Number")]

@@ -43,17 +43,11 @@ namespace TaxPayers.Controllers
 
             return Ok(taxpayers);
         }
-
-        // GET api/<TaxpayerController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+   
 
         // POST api/<TaxpayerController>
         [HttpPost]        
-        public async Task<IActionResult> Post(Taxpayer taxpayer)
+        public async Task<IActionResult> Post([FromForm]Taxpayer taxpayer)
         {
             //checking if form is filled
             if (!ModelState.IsValid)
@@ -102,25 +96,23 @@ namespace TaxPayers.Controllers
 
         // PUT api/<TaxpayerController>/5       
         [HttpPut("{tpin}")]
-        public async Task<IActionResult> Put(string tpin)
+        public async Task<IActionResult> Put(string tpin, [FromForm] Taxpayer taxpayer)
         {
 
-            /*/checking if form is filled
+            //checking if form is filled
             if (!ModelState.IsValid)
             {
                 string messages = string.Join("; ", ModelState.Values
                                         .SelectMany(x => x.Errors)
                                         .Select(x => x.ErrorMessage));
                 return BadRequest(messages);
-            } */
+            } 
             try
             {
                 var forData = HttpContext.Request.Form;
                 // header
                 string username = HttpContext.Session.GetString("Username");
-
-                var taxpayer = new Taxpayer();
-                //Taxpayer taxpayey
+            
                 HttpClient.DefaultRequestHeaders.Add("candidateid", username);
                 HttpClient.DefaultRequestHeaders.Add("apikey", "3fdb48c5-336b-47f9-87e4-ae73b8036a1c");
 
